@@ -1,0 +1,8 @@
+---
+- hosts: monitoring_servers
+  sudo: True
+  roles:
+   - { role: icinga2-ansible-no-ui,
+             check_commands:
+             { check_nrpe: { -H: "$address$", -c: "$remote_nrpe_command$" }},
+             tags: ["icinga2-no-ui"] }
